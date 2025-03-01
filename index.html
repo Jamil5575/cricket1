@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Watch live cricket streaming in HD with real-time scores. CWC, IPL, and international matches with expert commentary.">
+    <meta name="keywords" content="Cricket Live Streaming, Watch Cricket Online, Live Match Updates, Cricket Highlights, IPL Live, World Cup Live">
+    <title>Live Cricket Streaming | CricStream Pro</title>
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SportsEvent",
+        "name": "ICC T20 World Cup 2024",
+        "startDate": "2024-06-01",
+        "endDate": "2024-06-30",
+        "location": "Worldwide",
+        "broadcastService": {
+            "@type": "BroadcastService",
+            "name": "CricStream Pro",
+            "broadcastTimezone": "UTC+0"
+        }
+    }
+    </script>
+
+    <!-- Video.js CSS -->
+    <link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --sports-green: #1B5E20;
+            --action-red: #D32F2F;
+            --dark-bg: #0A0A0A;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: var(--dark-bg);
+            color: white;
+            margin: 0;
+        }
+
+        /* Hero Section */
+        .live-hero {
+            position: relative;
+            padding: 2rem 1rem;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
+                        url('stadium-bg.avif');
+            background-size: cover;
+            text-align: center;
+        }
+
+        .live-scorecard {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            max-width: 800px;
+            margin: 1rem auto;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+        }
+
+        /* Video Player */
+        .stream-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            position: relative;
+        }
+
+        /* Match Schedule */
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .match-card {
+            background: #1E1E1E;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        /* Pricing Plans */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .schedule-grid, .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="live-hero">
+        <h1>LIVE: IND vs PAK - T20 World Cup 2024</h1>
+        <div class="live-scorecard" aria-live="polite">
+            <div class="team-score">
+                <h2>INDIA</h2>
+                <div class="score">189/4 (18.3)</div>
+            </div>
+            <div class="vs">VS</div>
+            <div class="team-score">
+                <h2>PAKISTAN</h2>
+                <div class="score">187/9 (20)</div>
+            </div>
+        </div>
+        <button class="cta-button">Watch Live Now</button>
+        <button class="cta-button secondary">Subscribe</button>
+    </section>
+
+    <!-- Main Stream Player -->
+    <div class="stream-container">
+           <iframe src=https://cdn.crichdplays.ru/embed2.php?id=willow&q=Willow Cricket HD width=95% height=520 frameborder=0 scrolling=no border=0 allow=autoplay allowfullscreen=true marginheight=0 marginwidth=0 webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+
+    <!-- Match Schedule -->
+    <section class="schedule">
+        <h2>Upcoming Matches</h2>
+        <div class="schedule-grid">
+            <div class="match-card">
+                <div class="teams">
+                    <img src="aus-flag.webp" alt="Australia" loading="lazy">
+                    vs
+                    <img src="eng-flag.webp" alt="England" loading="lazy">
+                </div>
+                <div class="countdown" data-time="2024-06-10T08:00:00Z"></div>
+                <button class="notify-btn">Notify Me</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Plans -->
+    <section class="pricing">
+        <h2>Streaming Plans</h2>
+        <div class="pricing-grid">
+            <div class="plan">
+                <h3>Tournament Pass</h3>
+                <ul>
+                    <li>4K Streaming</li>
+                    <li>Multi-camera Angles</li>
+                    <li>Expert Commentary</li>
+                </ul>
+                <button class="cta-button">$29.99/month</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Badges -->
+    <div class="trust-badges">
+        <img src="ssl-secure.svg" alt="SSL Secure" loading="lazy">
+        <img src="payment-options.png" alt="Payment Options" loading="lazy">
+    </div>
+
+    <!-- Video.js Script -->
+    <script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
+    
+    <script>
+        // Initialize Video.js Player
+        const player = videojs('main-stream', {
+            responsive: true,
+            fluid: true,
+            controlBar: {
+                volumePanel: {
+                    inline: false
+                }
+            }
+        });
+
+        // Real-time WebSocket Updates
+        const ws = new WebSocket('wss://api.cricstream.live/updates');
+        ws.onmessage = function(event) {
+            const data = JSON.parse(event.data);
+            updateLiveScore(data);
+        };
+
+        // Update Score Function
+        function updateLiveScore(data) {
+            document.querySelector('.team-score:first-child .score').textContent = 
+                `${data.runs}/${data.wickets} (${data.overs})`;
+        }
+
+        // Countdown Timer
+        function updateCountdowns() {
+            document.querySelectorAll('.countdown').forEach(timer => {
+                const target = new Date(timer.dataset.time);
+                const now = new Date();
+                const diff = target - now;
+                
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                
+                timer.textContent = `${days}d ${hours}h remaining`;
+            });
+        }
+        setInterval(updateCountdowns, 1000);
+
+        // Analytics
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-XXXXX-Y');
+
+        // Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+            .then(registration => console.log('SW registered'))
+            .catch(err => console.log('SW registration failed'));
+        }
+    </script>
+</body>
+</html>
