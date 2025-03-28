@@ -2,260 +2,707 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-	<meta name="google-adsense-account" content="ca-pub-5760189528012605">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Watch live cricket streaming in HD with real-time scores. CWC, IPL, and international matches with expert commentary.">
-    <meta name="keywords" content="Cricket Live Streaming, Watch Cricket Online, Live Match Updates, Cricket Highlights, IPL Live, World Cup Live">
-    <title>Live Cricket Streaming | CricStream Pro</title>
+    <meta name="google-adsense-account" content="ca-pub-5760189528012605">
+    <meta name="description" content="Experience stunning HD live cricket streaming with real-time scores. CWC, IPL, BPL, PSL and international matches featuring expert commentary.">
+    <meta name="keywords" content="Cricket Live Streaming, Watch Cricket Online HD, Live Match Score, Cricket Highlights, IPL Live, BPL Live, PSL Live, World Cup Live, CricStream Pro">
+    <title>Stunning Live Cricket Streaming HD | CricStream Pro</title>
+
+    <!-- Favicon (Add your favicon link here) -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for Icons (Optional, but nice for visuals) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Schema Markup -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "CricStream Pro",
+        "url": "https://www.yourwebsite.com", // Replace with your actual URL
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.yourwebsite.com/search?q={search_term_string}", // Replace if you have search
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
         "@type": "SportsEvent",
-        "name": "ICC T20 World Cup 2024",
-        "startDate": "2024-06-01",
-        "endDate": "2024-06-30",
-        "location": "Worldwide",
-        "broadcastService": {
-            "@type": "BroadcastService",
-            "name": "CricStream Pro",
-            "broadcastTimezone": "UTC+0"
+        "name": "Live Cricket Matches (e.g., ICC T20 World Cup 2024)",
+        "startDate": "2024-06-01", // Update dynamically if possible
+        "endDate": "2024-06-30",   // Update dynamically if possible
+        "location": {
+            "@type": "Place",
+            "name": "Various Locations"
+        },
+        "description": "Watch live cricket matches including CWC, IPL, and international series.",
+        "performer": {
+            "@type": "SportsTeam",
+            "name": "Various International Cricket Teams"
+        },
+        "offers": {
+            "@type": "Offer",
+            "url": "https://www.yourwebsite.com/subscribe", // Link to subscription
+            "price": "29.99",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock",
+            "validFrom": "2024-01-01"
+        },
+        "potentialAction": {
+            "@type": "WatchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://www.yourwebsite.com/live-stream", // Link to your live stream page/player
+              "inLanguage": "en-US",
+              "actionPlatform": [
+                "https://schema.org/DesktopWebPlatform",
+                "https://schema.org/IOSPlatform",
+                "https://schema.org/AndroidPlatform",
+                "https://schema.org/MobileWebPlatform"
+              ]
+            },
+            "expectsAcceptanceOf": {
+               "@type": "Offer",
+               "eligibleRegion": "Worldwide", // Adjust as needed
+               "availability": "https://schema.org/InStock"
+            }
         }
     }
     </script>
 
-    <!-- Video.js CSS -->
-    <link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet">
-    
+    <!-- Main Stylesheet -->
     <style>
         :root {
-            --sports-green: #1B5E20;
-            --action-red: #D32F2F;
-            --dark-bg: #0A0A0A;
+            --primary-color: #00C853; /* Vibrant Green */
+            --secondary-color: #FFD600; /* Contrasting Yellow/Gold */
+            --background-dark: #0D1117; /* Very Dark Grey/Blue */
+            --background-light: #161B22; /* Slightly Lighter Grey */
+            --text-light: #F0F6FC;
+            --text-medium: #C9D1D9;
+            --text-dark: #8B949E;
+            --danger-color: #F85149;
+            --border-color: #30363D;
+            --shadow-color: rgba(0, 0, 0, 0.4);
+            --font-family: 'Poppins', sans-serif;
+            --border-radius: 12px;
+            --transition-speed: 0.3s ease;
+        }
+
+        /* Basic Reset & Body Styling */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background: var(--dark-bg);
-            color: white;
-            margin: 0;
+            font-family: var(--font-family);
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            font-size: 16px;
         }
 
-        /* Hero Section */
-        .live-hero {
-            position: relative;
-            padding: 2rem 1rem;
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
-                        url('stadium-bg.avif');
-            background-size: cover;
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            margin-bottom: 0.75em;
+            color: var(--primary-color); /* Highlight headings */
+        }
+
+        h1 { font-size: 2.8rem; }
+        h2 { font-size: 2.2rem; text-align: center; margin-bottom: 1.5em; }
+        h3 { font-size: 1.6rem; color: var(--text-light); } /* Sub-section titles */
+
+        p {
+            margin-bottom: 1em;
+            color: var(--text-medium);
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color var(--transition-speed);
+        }
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        img, iframe {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        button, .cta-button {
+            display: inline-block;
+            padding: 12px 28px;
+            font-size: 1rem;
+            font-weight: 600;
             text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: background-color var(--transition-speed), transform var(--transition-speed), box-shadow var(--transition-speed);
+            background-color: var(--primary-color);
+            color: var(--background-dark);
+            margin: 0.5rem;
+        }
+        button:hover, .cta-button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px var(--shadow-color);
+        }
+        .cta-button.secondary {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        .cta-button.secondary:hover {
+            background-color: var(--primary-color);
+            color: var(--background-dark);
         }
 
-        .live-scorecard {
-            background: rgba(255,255,255,0.1);
-            padding: 1rem;
-            border-radius: 8px;
-            max-width: 800px;
-            margin: 1rem auto;
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
-            align-items: center;
-        }
-
-        /* Video Player */
-        .stream-container {
+        .container {
             max-width: 1200px;
-            margin: 2rem auto;
-            position: relative;
+            margin: 0 auto;
+            padding: 0 1rem; /* Add horizontal padding */
         }
 
-        /* Match Schedule */
+        /* Header / Hero Section */
+        .hero-section {
+            position: relative;
+            padding: 6rem 1rem 4rem; /* Increased padding */
+            background: linear-gradient(rgba(13, 17, 23, 0.9), rgba(13, 17, 23, 0.7)), url('stadium-bg.avif') no-repeat center center/cover; /* Ensure you have a high-res stadium-bg.avif */
+            text-align: center;
+            border-bottom: 5px solid var(--primary-color);
+            overflow: hidden; /* Prevent content overflow issues */
+        }
+        .hero-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5em;
+            text-shadow: 0 3px 6px var(--shadow-color);
+        }
+        .hero-section .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-medium);
+            margin-bottom: 2em;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero-buttons {
+            margin-top: 1rem;
+        }
+
+        /* Ad Banner Placeholder Styling */
+        .ad-banner {
+            background-color: var(--background-light);
+            border: 1px solid var(--border-color);
+            margin: 1rem auto;
+            padding: 0.5rem;
+            text-align: center;
+            max-width: 970px; /* Common ad width */
+            min-height: 90px; /* Common ad height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+        }
+
+        /* Stream Player Section */
+        .stream-section {
+            padding: 3rem 0;
+        }
+        .stream-container {
+            position: relative;
+            width: 100%;
+            max-width: 1100px; /* Control max width */
+            margin: 0 auto;
+            background-color: #000; /* Black background for player */
+            border-radius: var(--border-radius);
+            overflow: hidden; /* Clip iframe corners */
+            box-shadow: 0 10px 30px var(--shadow-color);
+            border: 1px solid var(--border-color);
+        }
+        .stream-container iframe {
+             /* Aspect ratio padding trick (16:9) */
+            width: 100%;
+            height: 620px; /* Adjust height as needed, or use aspect ratio */
+            border: none; /* Remove default iframe border */
+        }
+
+        /* Schedule Section */
+        .schedule-section {
+            padding: 4rem 1rem;
+            background-color: var(--background-light); /* Slightly different background */
+        }
         .schedule-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1rem;
-            padding: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+             /* Adjust number of columns and min width */
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
         }
-
         .match-card {
-            background: #1E1E1E;
+            background: var(--background-dark); /* Darker card */
             padding: 1.5rem;
-            border-radius: 8px;
-            text-align: center;
-            transition: transform 0.3s;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 5px 15px var(--shadow-color);
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            overflow: hidden; /* Ensure iframe respects border-radius */
+        }
+        .match-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px var(--shadow-color);
+        }
+        .match-card iframe {
+            border-radius: calc(var(--border-radius) - 1px); /* Match parent radius */
+            min-height: 450px; /* Keep minimum height */
+            width: 100%;
+            border: none;
         }
 
-        /* Pricing Plans */
+        /* Pricing Section */
+        .pricing-section {
+            padding: 4rem 1rem;
+        }
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            /* Creates 3 columns, or fewer on smaller screens */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            padding: 2rem;
-            max-width: 1200px;
+            max-width: 900px; /* Limit width for better presentation */
             margin: 0 auto;
+        }
+        .plan-card {
+            background: var(--background-light);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            display: flex;
+            flex-direction: column; /* Align items vertically */
+        }
+        .plan-card:hover {
+            transform: scale(1.05); /* Slightly larger on hover */
+            box-shadow: 0 8px 25px var(--shadow-color);
+            border-color: var(--primary-color); /* Highlight border on hover */
+        }
+        .plan-card h3 {
+            color: var(--primary-color); /* Plan title color */
+            margin-bottom: 1rem;
+        }
+        .plan-card .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        .plan-card .price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-medium);
+        }
+        .plan-card ul {
+            list-style: none;
+            margin: 1.5rem 0;
+            color: var(--text-medium);
+            text-align: left;
+            padding-left: 1rem;
+            flex-grow: 1; /* Makes list take up available space */
+        }
+        .plan-card ul li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem; /* Space for icon */
+        }
+        .plan-card ul li::before {
+            content: '\f00c'; /* Font Awesome check icon */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+        .plan-card .cta-button {
+            margin-top: auto; /* Pushes button to the bottom */
+        }
+
+        /* Trust Badges Section */
+        .trust-badges {
+            text-align: center;
+            padding: 2rem 1rem;
+            background-color: var(--background-dark); /* Match body */
+            border-top: 1px solid var(--border-color);
+        }
+        .trust-badges h3 {
+            color: var(--text-medium);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .trust-badges img {
+            display: inline-block; /* Align horizontally */
+            height: 40px; /* Control size */
+            width: auto;
+            margin: 0 1rem;
+            filter: grayscale(50%) opacity(0.7); /* Subtle look */
+            transition: filter var(--transition-speed);
+        }
+        .trust-badges img:hover {
+            filter: grayscale(0%) opacity(1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--background-light);
+            color: var(--text-dark);
+            text-align: center;
+            padding: 1.5rem 1rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+        }
+        footer a {
+            color: var(--text-medium);
+        }
+        footer a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            h1 { font-size: 2.8rem; }
+            .hero-section h1 { font-size: 3rem; }
+            h2 { font-size: 1.8rem; }
+            h3 { font-size: 1.4rem; }
+            .stream-container iframe { height: 500px; }
         }
 
         @media (max-width: 768px) {
+            body { font-size: 15px; }
+            h1 { font-size: 2.4rem; }
+            .hero-section { padding: 4rem 1rem 3rem; }
+            .hero-section h1 { font-size: 2.5rem; }
+            .hero-section .subtitle { font-size: 1.1rem; }
+            h2 { font-size: 1.6rem; }
+            h3 { font-size: 1.3rem; }
+            .stream-container iframe { height: 400px; }
             .schedule-grid, .pricing-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* Stack cards */
             }
+            .plan-card ul { text-align: center; padding-left: 0;}
+            .plan-card ul li { padding-left: 0; }
+            .plan-card ul li::before { display: none; } /* Hide icons on mobile if centered */
+            .plan-card ul li::before { /* Alternative: Keep icons but adjust */
+               position: static;
+               margin-right: 0.5em;
+               display: inline-block;
+            }
+
         }
+
+        @media (max-width: 576px) {
+            h1 { font-size: 2rem; }
+            .hero-section { padding: 3rem 1rem 2rem; }
+            .hero-section h1 { font-size: 2rem; }
+            .hero-section .subtitle { font-size: 1rem; }
+            .cta-button { padding: 10px 20px; font-size: 0.9rem; }
+            .stream-container iframe { height: 300px; }
+            .trust-badges img { height: 30px; margin: 0 0.5rem;}
+        }
+
+        /* Utility Class for Ad Containers (Optional) */
+        .ad-container {
+            margin: 2rem auto; /* Add spacing around ad units */
+            max-width: 728px; /* Common ad size */
+            min-height: 90px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* background: #222; Optional: placeholder background */
+        }
+
     </style>
 </head>
 <body>
-	<div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5760189528012605"
-     crossorigin="anonymous"></script></div>
+
+    <!-- Google Adsense Script (Top of Body) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5760189528012605" crossorigin="anonymous"></script>
+
     <!-- Hero Section -->
-	
-    <section class="live-hero" img src="https://github.com/Jamil5575/cricket1/blob/main/OIP%20(2).jpg?raw=true">
-	    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5760189528012605"
-     crossorigin="anonymous"></script>
-<!-- TopBanner_970x250 -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-5760189528012605"
-     data-ad-slot="7495460609"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-        <h1>ICC Champhions trophy 2025</h1>
-        <div class="live-scorecard" aria-live="polite">
-            <div class="team-score">
-               <iframe src="https://bwidget.crictimes.org/" style="width:100%;min-height: 250px;" frameborder="0" scrolling="yes"></iframe>
+    <header class="hero-section">
+        <div class="container">
+            <h1>CricStream Pro</h1>
+            <p class="subtitle">Your Ultimate Destination for Stunning HD Live Cricket Streaming. Catch every ball, every boundary, live and exclusive.</p>
+
+             <!-- Ad Banner 1 -->
+            <div class="ad-banner">
+                <ins class="adsbygoogle"
+                     style="display:block; width:100%; max-width:970px; height:90px;"
+                     data-ad-client="ca-pub-5760189528012605"
+                     data-ad-slot="7495460609"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
+            </div>
+
+            <div class="hero-buttons">
+                <a href="#live-stream" class="cta-button">Watch Live Now <i class="fas fa-play-circle" style="margin-left: 8px;"></i></a>
+                <a href="#pricing" class="cta-button secondary">View Plans <i class="fas fa-tags" style="margin-left: 8px;"></i></a>
             </div>
         </div>
-        <button class="cta-button">Watch Live Now</button>
-        <button class="cta-button secondary">Subscribe</button>
-    </section>
-	<div><script type="text/javascript">
-	atOptions = {
-		'key' : 'e4eb141792bd1df2dc0d5e9ff1935873',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/e4eb141792bd1df2dc0d5e9ff1935873/invoke.js"></script></div>
+    </header>
 
-    <!-- Main Stream Player -->
-    <div class="stream-container">
-           <iframe src=https://cdn.crichdplays.ru/embed2.php?id=willow&q=Willow Cricket HD width=95% height=520 frameborder=0 scrolling=no border=0 allow=autoplay allowfullscreen=true marginheight=0 marginwidth=0 webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-    </div>
-
-    <!-- Match Schedule -->
-    <section class="schedule">
-        <h2>Upcoming Matches</h2>
-        <div class="schedule-grid">
-            <div class="match-card">
-               <iframe src="https://widget.crictimes.org/" style="width:100%;min-height: 450px;" frameborder="0" scrolling="yes"></iframe>
-            </div>
+    <main>
+        <!-- Ad Banner 2 (High Performance Format) -->
+        <div class="ad-container">
+            <script type="text/javascript">
+                atOptions = { 'key' : 'e4eb141792bd1df2dc0d5e9ff1935873', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/e4eb141792bd1df2dc0d5e9ff1935873/invoke.js"></script>
         </div>
-    </section>
-	<div><script type="text/javascript">
-	atOptions = {
-		'key' : 'e4eb141792bd1df2dc0d5e9ff1935873',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/e4eb141792bd1df2dc0d5e9ff1935873/invoke.js"></script></div>
 
-    <!-- Pricing Plans -->
-    <section class="pricing">
-        <h2>Streaming Plans</h2>
-        <div class="pricing-grid">
-            <div class="plan">
-                <h3>Tournament Pass</h3>
-                <ul>
-                    <li>4K Streaming</li>
-                    <li>Multi-camera Angles</li>
-                    <li>Expert Commentary</li>
-                </ul>
-                <button class="cta-button">$29.99/month</button>
+        <!-- Main Stream Player Section -->
+        <section id="live-stream" class="stream-section">
+            <div class="container">
+                <h2 style="color: var(--text-light);">Live Stream</h2>
+                <div class="stream-container">
+                    <!-- Note: Ensure the iframe source is reliable and secure -->
+                    <iframe src="https://cdn.crichdplays.ru/embed2.php?id=willow&q=Willow Cricket HD"
+                            title="Live Cricket Stream Player"
+                            frameborder="0"
+                            scrolling="no"
+                            allow="autoplay; fullscreen"
+                            webkitallowfullscreen mozallowfullscreen allowfullscreen>
+                    </iframe>
+                </div>
             </div>
+        </section>
+
+        <!-- Match Schedule Section -->
+        <section class="schedule-section">
+            <div class="container">
+                <h2>Upcoming Matches & Scores</h2>
+                <div class="schedule-grid">
+                    <!-- Embed widget within a styled card -->
+                    <div class="match-card">
+                         <h3 style="text-align: center; margin-bottom: 1rem;">Live Scores & Schedule</h3>
+                        <iframe src="https://widget.crictimes.org/" title="Cricket Schedule Widget" style="width:100%; min-height: 450px;" frameborder="0" scrolling="yes"></iframe>
+                    </div>
+                     <!-- Add more cards here if needed, maybe for specific leagues or featured matches -->
+                     <!-- Example placeholder card -->
+                     <!--
+                     <div class="match-card">
+                        <h3>Featured Match: IND vs PAK</h3>
+                         <p>ICC T20 World Cup - June 9, 2024</p>
+                         <p>Live in: <span class="countdown" data-time="2024-06-09T14:30:00Z">Calculating...</span></p>
+                         <a href="#live-stream" class="cta-button small" style="margin-top: 1rem; padding: 8px 16px; font-size: 0.9rem;">Go to Stream</a>
+                     </div>
+                     -->
+                </div>
+            </div>
+        </section>
+
+         <!-- Ad Banner 3 (High Performance Format) -->
+        <div class="ad-container">
+            <script type="text/javascript">
+                atOptions = { 'key' : 'e4eb141792bd1df2dc0d5e9ff1935873', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/e4eb141792bd1df2dc0d5e9ff1935873/invoke.js"></script>
         </div>
-        
-    </section>
-	<div><script type="text/javascript">
-	atOptions = {
-		'key' : 'e4eb141792bd1df2dc0d5e9ff1935873',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/e4eb141792bd1df2dc0d5e9ff1935873/invoke.js"></script></div>
 
-    <!-- Trust Badges -->
-    <div class="trust-badges">
-        <img src="ssl-secure.svg" alt="SSL Secure" loading="lazy">
-        <img src="payment-options.png" alt="Payment Options" loading="lazy">
-    </div>
 
-    <!-- Video.js Script -->
-    <script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
-    
+        <!-- Pricing Plans Section -->
+        <section id="pricing" class="pricing-section">
+            <div class="container">
+                <h2>Choose Your Plan</h2>
+                <div class="pricing-grid">
+                    <!-- Single Plan Example - Expand this -->
+                    <div class="plan-card">
+                        <h3>Tournament Pass</h3>
+                        <p class="price">$29.99 <span>/ month</span></p>
+                        <ul>
+                            <li>Crystal Clear HD/4K Streaming</li>
+                            <li>Multiple Camera Angles</li>
+                            <li>World-Class Expert Commentary</li>
+                            <li>Ad-Free Experience*</li>
+                            <li>Watch on Any Device</li>
+                            <li>Exclusive Highlights</li>
+                        </ul>
+                        <button class="cta-button">Subscribe Now</button>
+                         <p style="font-size: 0.8rem; color: var(--text-dark); margin-top: 1rem;">*Ad-free during live match play.</p>
+                    </div>
+
+                    <!-- Add More Plan Cards Here (e.g., Annual Pass, Free Tier?) -->
+                    <div class="plan-card popular"> <!-- Add 'popular' class for highlighting -->
+                         <!-- Optional: Add a ribbon like "Most Popular" -->
+                        <h3>Annual Pro Pass</h3>
+                        <p class="price">$199.99 <span>/ year</span></p>
+                         <ul>
+                            <li>Everything in Tournament Pass</li>
+                            <li>Access All Year Round</li>
+                            <li>Biggest Savings!</li>
+                            <li>Priority Support</li>
+                            <li>Early Access to Features</li>
+                            <li>Download Matches Offline</li>
+                        </ul>
+                        <button class="cta-button">Go Pro Annually</button>
+                    </div>
+
+                     <div class="plan-card">
+                        <h3>Day Pass</h3>
+                        <p class="price">$4.99 <span>/ 24 hours</span></p>
+                         <ul>
+                            <li>HD Streaming Access</li>
+                            <li>Watch Today's Matches</li>
+                            <li>Standard Commentary</li>
+                            <li>Perfect for Single Games</li>
+                            <li>Quick & Easy Access</li>
+                             <li> </li> <!-- Placeholder for alignment -->
+                        </ul>
+                        <button class="cta-button secondary">Get Day Access</button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+         <!-- Ad Banner 4 (High Performance Format) -->
+         <div class="ad-container">
+             <script type="text/javascript">
+                 atOptions = { 'key' : 'e4eb141792bd1df2dc0d5e9ff1935873', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+             </script>
+             <script type="text/javascript" src="//www.highperformanceformat.com/e4eb141792bd1df2dc0d5e9ff1935873/invoke.js"></script>
+         </div>
+
+        <!-- Trust Badges -->
+        <section class="trust-badges">
+            <div class="container">
+                 <h3>Secure Payments & Trusted Streaming</h3>
+                <!-- Replace with your actual badge images -->
+                <img src="https://via.placeholder.com/100x40/FFFFFF/000000?text=SSL+Secure" alt="SSL Secure Connection" loading="lazy">
+                <img src="https://via.placeholder.com/150x40/FFFFFF/000000?text=Payment+Options" alt="Visa, Mastercard, PayPal" loading="lazy">
+                 <img src="https://via.placeholder.com/100x40/FFFFFF/000000?text=HD+Quality" alt="HD Quality Streaming" loading="lazy">
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2024 CricStream Pro. All Rights Reserved.</p>
+            <p>
+                <a href="/about">About Us</a> |
+                <a href="/privacy">Privacy Policy</a> |
+                <a href="/terms">Terms of Service</a> |
+                <a href="/contact">Contact</a>
+            </p>
+            <!-- Add social media links if desired -->
+        </div>
+    </footer>
+
+    <!-- JavaScript (Keep essential scripts) -->
+    <!-- Video.js Script (Only include if you plan to use a Video.js player, not just the iframe) -->
+    <!-- <script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script> -->
+
     <script>
-        // Initialize Video.js Player
-        const player = videojs('main-stream', {
-            responsive: true,
-            fluid: true,
-            controlBar: {
-                volumePanel: {
-                    inline: false
+        // --- Optional Enhancements ---
+
+        // 1. Smooth Scroll for Anchor Links (if not handled by CSS `scroll-behavior`)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start' // Aligns top of target element to top of viewport
+                    });
                 }
-            }
+            });
         });
 
-        // Real-time WebSocket Updates
-        const ws = new WebSocket('wss://api.cricstream.live/updates');
-        ws.onmessage = function(event) {
-            const data = JSON.parse(event.data);
-            updateLiveScore(data);
-        };
 
-        // Update Score Function
-        function updateLiveScore(data) {
-            document.querySelector('.team-score:first-child .score').textContent = 
-                `${data.runs}/${data.wickets} (${data.overs})`;
-        }
-
-        // Countdown Timer
+        // 2. Placeholder for Countdown Timer Logic (If you add countdown elements)
+        /*
         function updateCountdowns() {
             document.querySelectorAll('.countdown').forEach(timer => {
-                const target = new Date(timer.dataset.time);
+                const targetTime = timer.dataset.time;
+                if (!targetTime) return;
+
+                const target = new Date(targetTime);
                 const now = new Date();
                 const diff = target - now;
-                
+
+                if (diff <= 0) {
+                    timer.textContent = "Live Now / Starting Soon";
+                    return;
+                }
+
                 const days = Math.floor(diff / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                
-                timer.textContent = `${days}d ${hours}h remaining`;
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                // const seconds = Math.floor((diff % (1000 * 60)) / 1000); // Uncomment if you want seconds
+
+                let countdownText = '';
+                if (days > 0) countdownText += `${days}d `;
+                if (hours > 0 || days > 0) countdownText += `${hours}h `;
+                countdownText += `${minutes}m`;
+
+                timer.textContent = countdownText.trim() + " remaining";
             });
         }
-        setInterval(updateCountdowns, 1000);
+        // Call initially and set interval
+        updateCountdowns();
+        setInterval(updateCountdowns, 60000); // Update every minute
+        */
 
-        // Analytics
+
+        // 3. Analytics Placeholder (Replace UA-XXXXX-Y)
+        /*
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'UA-XXXXX-Y');
+        */
 
-        // Service Worker Registration
+        // 4. Service Worker Registration (Keep if you have a sw.js file)
+        /*
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js')
-            .then(registration => console.log('SW registered'))
-            .catch(err => console.log('SW registration failed'));
+            window.addEventListener('load', () => {
+                 navigator.serviceWorker.register('/sw.js')
+                 .then(registration => console.log('Service Worker registered: ', registration))
+                 .catch(err => console.log('Service Worker registration failed: ', err));
+            });
         }
+        */
+
+        // Note: The original WebSocket and Video.js initialization code were removed
+        // as they didn't seem connected to the primary iframe player or have visible
+        // HTML elements to interact with. Add them back if you implement features
+        // that require them (e.g., a custom player or real-time score updates
+        // outside the iframe widgets).
+
     </script>
+
 </body>
 </html>
